@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 X = np.array([[1,-1,2],[2,0,0],[0,1,-1]])
 
 print(X)
-X.var(0)
+X.var(0)     ''' X.var() et X.mean() ??????? '''
 X.mean(0)
 
 Y = preprocessing.scale(X)
-Y.var(0)
+Y.var(0)                        ''' IDEM '''
 ''' la variance est de 1'''
 Y.mean(0)
 ''' la moyenne est de 0'''

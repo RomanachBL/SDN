@@ -1,1 +1,1 @@
-Projet de Science des Données Numériques
+Projet de Science des Données Numériques (M2)

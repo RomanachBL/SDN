@@ -1,19 +1,23 @@
 from sklearn import *
 import numpy as np
+from sklearn.metrics.pairwise import euclidean_distances
+
 
 iris = datasets.load_iris()
-X = iris.data
-Y = iris.target
+x = iris.data
+y = iris.target
 
-from sklearn.neighbors import KNeighborsClassifier
-nbors = KNeighborsClassifier(n_neighbors=1)
-nbors.fit(X, Y)
-i=0
-while i<len(X):
-    res = nbors.predict(X[i,:].reshape(1, -1))
-    '''print (res)'''
-    i=i+1
 
-'''err = sum(res != iris.target)
-print("Nb erreurs:", err)
-print( "Pourcentage de prédiction juste:", (150-err)*100/150)   # % de réussite'''
+def PPV(x,y):
+    tab = []
+    dist = euclidean_distances(x)
+    for i, point in enumerate(dist):
+        tab.append(y[np.argmin(np.delete(point, i))])
+    return tab
+
+a = PPV(x,y)
+print (a)
+
+print ("Pourcentage de réussite = ",str((sum(y == a)*100)/len(y)),"%")
+
+print ("Pourcentage d'erreurs = ",str(100-(sum(y == a)*100)/len(y)),"%")
